@@ -1,4 +1,3 @@
-//Zbiór kart
 const cards = {
     items: [{
             id: "",
@@ -51,23 +50,17 @@ const cards = {
     ]
 }
 
-//Duplikacja kart
 var cardsDuplicate = JSON.parse(JSON.stringify(cards));
 
-var time = 0
-    //Array with 2 cards of all types
+
+//Array with 2 cards of every type 
 var cardsAll = {
     items: cards.items.concat(cardsDuplicate.items),
-    count: 0,
-    tryCard1: "",
-    tryCard2: "",
-    score: 0,
-    tries: 0,
     active: false,
     start: false,
-    game: "",
+    won: false,
+    session: 0,
 }
-
 
 var app = new Vue({
     el: "#game",
@@ -79,26 +72,23 @@ var app = new Vue({
             } else {
                 item.flipped = true
                 game.count += 1
-                    //DEKLARACJA PIERWSZEJ ODKRYTEJ KARTY
+                    //Choosing 1st card
                 if (game.count === 1) {
                     tryCard1 = item
                 }
-
-                //DEKLARACJA DRUGIEJ ODKRYTEJ KARTY I SPRAWDZENIE ZGODNOŚCI
+                //Choosing 2nd card and comparing
                 else if (game.count === 2) {
                     tryCard2 = item
                     game.tries += 1
                     game.active = false
 
-                    //KARTY SĄ ZGODNE
+                    //Matching cards
                     if (tryCard1.name === tryCard2.name) {
-                        console.log("HURRA")
                         game.score += 1
                         game.active = true;
                     }
-                    //KARTY NIE SĄ ZGODNE
+                    //Different cards
                     else {
-                        console.log("WRONG")
                         setTimeout(function() {
                             game.active = true;
                             tryCard1.flipped = false;
@@ -107,12 +97,14 @@ var app = new Vue({
                     }
                     game.count = 0
                 }
-                //KONIEC GRY
+                //End of the game
                 if (game.score === 0.5 * game.items.length) {
+                    game.endTime = new Date()
+                    game.time = 0.001 * (game.endTime - game.startTime);
                     setTimeout(function() {
-                        alert("BRAWO");
+                        game.won = true;
+                        app.$forceUpdate();
                     }, 500)
-
                 }
             }
 
@@ -120,28 +112,30 @@ var app = new Vue({
         },
         newGame: function() {
             game = this
+            game.startTime = new Date()
             game.start = true
-            game.score = game.count = game.tries = 0
+            game.score = game.count = game.tries = game.won = 0
 
-            setTimeout(function() {
-                game.active = true;
-            }, 3200)
+            if (game.session === 0) {
+                setTimeout(function() {
+                    game.active = true;
+                    game.startTime = new Date();
+                    game.session = 1
+                }, 3200)
+            }
 
             for (i = 0; i < this.items.length; i++) {
                 this.items[i].flipped = false;
             }
 
+            //Shuffling cards
             for (i = 0; i < this.items.length; i++) {
-                //losuje index karty
                 var randomNumber = Math.round(Math.random() * (this.items.length - 1));
-                //przechwycamy wybraną kartę w temp
                 var temp = this.items[i];
-                //podmianka wybranej karty na wylosowaną kartę
                 this.items[i] = this.items[randomNumber];
-                //podmianka wylosowanej karty na wybraną
                 this.items[randomNumber] = temp
             }
-            //odświeżenie widoku
+
             app.$forceUpdate();
         }
     }
