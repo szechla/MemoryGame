@@ -13,6 +13,8 @@
     <link async href="http://fonts.googleapis.com/css?family=Atomic%20Age" rel="stylesheet" type="text/css" />
     <link async href="http://fonts.googleapis.com/css?family=Acme" rel="stylesheet" type="text/css" />
     <link async href="http://fonts.googleapis.com/css?family=Warnes" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="img/favicon.png" />
+
     <!-- Vue.js -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <title>-- Memory Game --</title>
@@ -24,10 +26,16 @@
     </header>
 
     <div id="game">
-
-
         <div class="row scale-animate" v-if="this.start">
             <button @click="newGame" class="newGameButton">New Game</button>
+
+            <div class="alert alert-success scale-animate" role="alert" v-if="this.won">
+                <h4 class="alert-heading">Well done!</h4>
+                <p>Congratulations! You have won this game with {{ this.tries }} tries and it took you {{ this.time }} seconds.</p>
+                <hr>
+                <p class="mb-0">Play again and try to beat your score if u wish!.</p>
+            </div>
+
             <div class="w-100"></div>
             <div id="cardTable">
                 <div class="card" v-for="item in items" id="gameCard">
@@ -39,16 +47,14 @@
 
                         <!-- BACK CARD -->
                         <div class="backCard" v-if="!item.flipped" @click="flipCard(item)">
-                            <img class="card-img-top" src="img/back.jpg" alt="Card image cap">
+                            <img class="card-img-top" src="img/back.png" alt="Card image cap">
                         </div>
                     </transition>
                 </div>
+
             </div>
-
-            <h4>Tries: {{ this.tries }}</h4>
-
+            <h4 class="tries">Tries: {{ this.tries }}</h4>
         </div>
-
 
         <div class="game-background" v-else>
             <transition name="flip">
@@ -56,6 +62,11 @@
             </transition>
         </div>
     </div>
+
+
+    <footer>
+        KSProject 2018
+    </footer>
 
     <!-- Optional JavaScript -->
     <script src="app.js"></script>
