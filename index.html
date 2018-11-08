@@ -26,6 +26,7 @@
     </header>
 
     <div id="game">
+        <div class="w-100"></div>
         <div class="row scale-animate" v-if="this.start">
             <button @click="newGame" class="newGameButton">New Game</button>
 
@@ -38,7 +39,7 @@
 
             <div class="w-100"></div>
             <div id="cardTable">
-                <div class="card" v-for="item in items" id="gameCard">
+                <div class="card" v-for="item in items">
                     <transition name="flip">
                         <!-- FRONT CARD -->
                         <div class="frontCard" v-if="item.flipped" key="front">

@@ -1,3 +1,5 @@
+/*Main elements*/
+
 header {
     width: 100%;
     height: 160px;
@@ -18,13 +20,8 @@ footer {
     text-align: center;
 }
 
-.game-background {
-    margin: 150px 0px;
-    padding: 50px;
-    width: 100%;
-    height: fit-content;
-    background: url("img/game-background.jpg") no-repeat center;
-}
+
+/*Main game elements*/
 
 .pressText {
     -webkit-box-sizing: border-box;
@@ -50,8 +47,29 @@ footer {
     text-shadow: 0 0 10px rgba(255, 0, 0, 1), 0 0 20px rgba(255, 0, 0, 1), 0 0 30px rgba(255, 0, 0, 1), 0 0 40px #00ffff, 0 0 70px #00ffff, 0 0 80px #00ffff, 0 0 100px #00ffff;
 }
 
+.game-background {
+    margin: 150px 0px;
+    padding: 50px;
+    width: 100%;
+    height: fit-content;
+    background: url("img/game-background.jpg") no-repeat center;
+}
+
+
+/*Secondary game elements*/
+
+p,
+h1,
+h2,
+h3,
 h4 {
     text-align: center;
+}
+
+#cardTable {
+    width: 80%;
+    max-width: 480px;
+    margin: auto;
 }
 
 .tries {
@@ -60,10 +78,6 @@ h4 {
     background-color: #48b8ff;
     width: 80%;
     max-width: 480px;
-}
-
-p {
-    text-align: center;
 }
 
 .row {
@@ -77,28 +91,7 @@ p {
     text-align: center;
 }
 
-.w-100 {
-    background: white;
-}
-
-h1 {
-    text-align: center;
-}
-
-
-/*Tabela z kartami*/
-
-#cardTable {
-    width: 80%;
-    max-width: 480px;
-    margin: auto;
-}
-
-
-/*Cards*/
-
 div.card {
-    opacity: 1;
     width: 25%;
     max-width: 120px;
     display: inline-block;
@@ -139,6 +132,92 @@ div.card {
     -webkit-box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.8);
     box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.8);
 }
+
+.neon-text {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    border: none;
+    font: normal normal bold 72px/normal "Atomic Age", Helvetica, sans-serif;
+    color: rgb(64, 126, 196);
+    text-align: center;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    text-shadow: 1px 1px 0 rgb(77, 162, 252), -1px -1px 0 rgb(77, 162, 252), 1px -1px 0 rgb(77, 162, 252), -1px 1px 0 rgb(77, 162, 252), 2px 2px 4px rgb(44, 88, 137), -2px 2px 4px rgb(44, 88, 137), 2px -2px 4px rgb(44, 88, 137), -2px -2px 4px rgb(44, 88, 137);
+    -webkit-transition: all 500ms cubic-bezier(0.42, 0, 0.58, 1);
+    -moz-transition: all 500ms cubic-bezier(0.42, 0, 0.58, 1);
+    -o-transition: all 500ms cubic-bezier(0.42, 0, 0.58, 1);
+    transition: all 500ms cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.neon-text:hover {
+    text-shadow: 1px 1px 0 rgb(77, 162, 252), -1px -1px 0 rgb(77, 162, 252), 1px -1px 0 rgb(77, 162, 252), -1px 1px 0 rgb(77, 162, 252);
+    -webkit-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+    -moz-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+    -o-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+    transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+
+/* CARD TRANSITION EFFECT */
+
+.flip-enter-active {
+    transition: all 1s ease;
+}
+
+.flip-enter {
+    transform: rotateY(180deg);
+    opacity: 0;
+}
+
+.flip-leave {
+    display: none;
+}
+
+
+/* New Game Transition */
+
+.scale-animate {
+    -webkit-animation: animatezoom 4s ease-out;
+    animation: animatezoom 4s ease-out;
+}
+
+@-webkit-keyframes animatezoom {
+    from {
+        -webkit-transform: scale(0);
+        -webkit-opacity: 0.2
+    }
+    to {
+        -webkit-transform: scale(1);
+        -webkit-opacity: 1
+    }
+}
+
+@keyframes animatezoom {
+    from {
+        transform: scale(0);
+        opacity: 0.2
+    }
+    to {
+        transform: scale(1);
+        opacity: 1
+    }
+}
+
+.animation-enter-active {
+    transition: all 5s ease;
+}
+
+.animation-enter {
+    opacity: 0;
+}
+
+.animation-leave {
+    display: none;
+}
+
+
+/*Adjusting to different screen sizes*/
 
 @media only screen and (max-width: 1000px) {
     .newGameButton {
@@ -204,87 +283,4 @@ div.card {
     footer {
         font-size: 8px;
     }
-}
-
-.neon-text {
-    -webkit-box-sizing: content-box;
-    -moz-box-sizing: content-box;
-    box-sizing: content-box;
-    border: none;
-    font: normal normal bold 72px/normal "Atomic Age", Helvetica, sans-serif;
-    color: rgb(64, 126, 196);
-    text-align: center;
-    -o-text-overflow: clip;
-    text-overflow: clip;
-    text-shadow: 1px 1px 0 rgb(77, 162, 252), -1px -1px 0 rgb(77, 162, 252), 1px -1px 0 rgb(77, 162, 252), -1px 1px 0 rgb(77, 162, 252), 2px 2px 4px rgb(44, 88, 137), -2px 2px 4px rgb(44, 88, 137), 2px -2px 4px rgb(44, 88, 137), -2px -2px 4px rgb(44, 88, 137);
-    -webkit-transition: all 500ms cubic-bezier(0.42, 0, 0.58, 1);
-    -moz-transition: all 500ms cubic-bezier(0.42, 0, 0.58, 1);
-    -o-transition: all 500ms cubic-bezier(0.42, 0, 0.58, 1);
-    transition: all 500ms cubic-bezier(0.42, 0, 0.58, 1);
-}
-
-.neon-text:hover {
-    text-shadow: 1px 1px 0 rgb(77, 162, 252), -1px -1px 0 rgb(77, 162, 252), 1px -1px 0 rgb(77, 162, 252), -1px 1px 0 rgb(77, 162, 252);
-    -webkit-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
-    -moz-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
-    -o-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
-    transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
-}
-
-
-/* TRANSITION EFFECT */
-
-.flip-enter-active {
-    transition: all 1s ease;
-}
-
-.flip-enter {
-    transform: rotateY(180deg);
-    opacity: 0;
-}
-
-.flip-leave {
-    display: none;
-}
-
-
-/* New Game Transition */
-
-.scale-animate {
-    -webkit-animation: animatezoom 4s ease-out;
-    animation: animatezoom 4s ease-out;
-}
-
-@-webkit-keyframes animatezoom {
-    from {
-        -webkit-transform: scale(0);
-        -webkit-opacity: 0.2
-    }
-    to {
-        -webkit-transform: scale(1);
-        -webkit-opacity: 1
-    }
-}
-
-@keyframes animatezoom {
-    from {
-        transform: scale(0);
-        opacity: 0.2
-    }
-    to {
-        transform: scale(1);
-        opacity: 1
-    }
-}
-
-.animation-enter-active {
-    transition: all 5s ease;
-}
-
-.animation-enter {
-    opacity: 0;
-}
-
-.animation-leave {
-    display: none;
 }
