@@ -147,4 +147,7 @@ pressToStart.addEventListener("click", disappear, false)
 
 function disappear() {
     pressToStart.className = "game-background leave";
+    setTimeout(function() {
+        pressToStart.style.display = "none";
+    }, 4000)
 }

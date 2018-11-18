@@ -21,18 +21,36 @@
 </head>
 
 <body>
+    <!-- 
     <header>
         <h2 class="neon-text">memory game</h2><br>
     </header>
+    -->
+    <header>
+        <h4>TOP 5 SCORES</h3>
+            <ol class="scoreTable">
+                <li class="score">1. Kamil - 15 tries - 30s</li>
+                <li class="score">*</li>
+                <li class="score">2. Ania - 18 tries - 55s</li>
+                <li class="score">*</li>
+                <li class="score">3. Dafi - 25 tries - 65s</li>
+                <li class="score">*</li>
+                <li class="score">4. Kamil - 35 tries - 80s</li>
+                <li class="score">*</li>
+                <li class="score">5. Mati - 45 tries - 130s</li>
+            </ol>
+    </header>
+    <button class="scoreButton">Show scoretable</button>
 
     <div id="game">
-        <div class="game-background">
-            <h1 class="pressText" @click="newGame">Press to play!</h1>
+        <div class="game-background" @click="newGame">
+            <h1 class="pressText">Press to play!</h1>
         </div>
 
         <div class="w-100"></div>
         <div class="row scale-animate" v-if="this.start">
-            <button @click="newGame" class="newGameButton">New Game</button>
+            <button @click="newGame" class="menuButton">New Game</button>
+
 
             <div class="alert alert-success scale-animate" role="alert" v-if="this.won">
                 <h4 class="alert-heading">Well done!</h4>
