@@ -5,10 +5,44 @@ body {
     background-size: cover;
 }
 
-header {
+#pageContent {
+    position: relative;
     width: 100%;
+    top: -85px
+}
+
+.top-header {
     background-color: #48b9ff75;
     background-size: cover;
+    height: 85px;
+}
+
+.headerLeave {
+    animation: moveHeader 1s forwards;
+    -webkit-animation: moveHeader 1s forwards;
+}
+
+.headerEnter {
+    animation: moveHeader 1s forwards reverse;
+    -webkit-animation: moveHeader 1s forwards reverse;
+}
+
+@keyframes moveHeader {
+    from {
+        top: 0px;
+    }
+    to {
+        top: -85px;
+    }
+}
+
+@-webkit-keyframes moveHeader {
+    from {
+        top: 0px;
+    }
+    to {
+        top: -85px;
+    }
 }
 
 .scoreTable {
@@ -22,17 +56,20 @@ header {
 }
 
 #game {
+    position: relative;
+    top: -5px;
     min-height: 250px;
+    width: 100%;
 }
 
 footer {
-    margin: 20px auto;
+    margin: 10px auto;
     padding-top: 5px;
     padding-bottom: 5px;
     background: rgba(208, 219, 248, 0.76);
     color: white;
     text-align: center;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
     z-index: -1;
@@ -72,8 +109,8 @@ footer {
     width: 100%;
     height: fit-content;
     background: url("img/game-background.jpg") no-repeat center;
-    position: relative;
-    bottom: 30%;
+    position: fixed;
+    bottom: 15%;
 }
 
 .leave {
@@ -109,10 +146,15 @@ h4 {
     padding: 0.2em 5em;
     border-bottom-right-radius: 5em;
     border-bottom-left-radius: 5em;
+    height: 30px;
 }
 
 .scoreButton:hover {
     background: #48b8ff
+}
+
+.scoreButton:focus {
+    outline: none;
 }
 
 #cardTable {
@@ -155,7 +197,7 @@ div.card {
 }
 
 .menuButton {
-    margin: 15px auto;
+    margin: 20px auto;
     display: block;
     -webkit-box-sizing: content-box;
     -moz-box-sizing: content-box;

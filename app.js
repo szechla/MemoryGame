@@ -151,3 +151,33 @@ function disappear() {
         pressToStart.style.display = "none";
     }, 4000)
 }
+
+const page = document.getElementById("pageContent");
+const scoreButton = document.getElementsByClassName("scoreButton")[0];
+
+
+scoreButton.addEventListener("click", function(e) {
+    if (page.style = "") {
+        console.log("Wait for animation ends")
+    } else {
+        switch (page.className) {
+            case "headerEnter":
+                e.preventDefault;
+                // -> removing the class
+                page.classList.remove("headerEnter");
+                // -> triggering reflow The actual magic 
+                // without this it wouldn't work.
+                void page.offsetWidth;
+                page.className = "headerLeave";
+                scoreButton.innerHTML = "Show scoretable"
+                break;
+            default:
+                e.preventDefault;
+                page.classList.remove("headerLeave");
+                void page.offsetWidth;
+                page.className = "headerEnter";
+                scoreButton.innerHTML = "Hide scoretable"
+                break;
+        }
+    }
+})

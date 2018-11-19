@@ -26,62 +26,64 @@
         <h2 class="neon-text">memory game</h2><br>
     </header>
     -->
-    <header>
-        <h4>TOP 5 SCORES</h3>
-            <ol class="scoreTable">
-                <li class="score">1. Kamil - 15 tries - 30s</li>
-                <li class="score">*</li>
-                <li class="score">2. Ania - 18 tries - 55s</li>
-                <li class="score">*</li>
-                <li class="score">3. Dafi - 25 tries - 65s</li>
-                <li class="score">*</li>
-                <li class="score">4. Kamil - 35 tries - 80s</li>
-                <li class="score">*</li>
-                <li class="score">5. Mati - 45 tries - 130s</li>
-            </ol>
-    </header>
-    <button class="scoreButton">Show scoretable</button>
+    <div id="pageContent">
+        <header>
+            <div class="top-header">
+                <h4>TOP 5 SCORES</h3>
+                    <ol class="scoreTable">
+                        <li class="score">1. Kamil - 15 tries - 30s</li>
+                        <li class="score">*</li>
+                        <li class="score">2. Ania - 18 tries - 55s</li>
+                        <li class="score">*</li>
+                        <li class="score">3. Dafi - 25 tries - 65s</li>
+                        <li class="score">*</li>
+                        <li class="score">4. Kamil - 35 tries - 80s</li>
+                        <li class="score">*</li>
+                        <li class="score">5. Mati - 45 tries - 130s</li>
+                    </ol>
+            </div>
+            <button class="scoreButton">Show scoretable</button>
+        </header>
 
-    <div id="game">
-        <div class="game-background" @click="newGame">
-            <h1 class="pressText">Press to play!</h1>
-        </div>
-
-        <div class="w-100"></div>
-        <div class="row scale-animate" v-if="this.start">
-            <button @click="newGame" class="menuButton">New Game</button>
-
-
-            <div class="alert alert-success scale-animate" role="alert" v-if="this.won">
-                <h4 class="alert-heading">Well done!</h4>
-                <p>Congratulations! You have won this game with {{ this.tries }} tries and it took you {{ this.time }} seconds.</p>
-                <hr>
-                <p class="mb-0">Play again and try to beat your score if u wish!.</p>
+        <div id="game">
+            <div class="game-background" @click="newGame">
+                <h1 class="pressText">Press to play!</h1>
             </div>
 
             <div class="w-100"></div>
-            <div id="cardTable">
-                <div class="card" v-for="item in items">
-                    <transition name="flip">
-                        <!-- FRONT CARD -->
-                        <div class="frontCard" v-if="item.flipped" key="front">
-                            <img class="card-img-top" :src="item.url" alt="Card image cap">
-                        </div>
+            <div class="row scale-animate" v-if="this.start">
+                <button @click="newGame" class="menuButton">New Game</button>
 
-                        <!-- BACK CARD -->
-                        <div class="backCard" v-if="!item.flipped" @click="flipCard(item)">
-                            <img class="card-img-top" src="img/back.png" alt="Card image cap">
-                        </div>
-                    </transition>
+
+                <div class="alert alert-success scale-animate" role="alert" v-if="this.won">
+                    <h4 class="alert-heading">Well done!</h4>
+                    <p>Congratulations! You have won this game with {{ this.tries }} tries and it took you {{ this.time }} seconds.</p>
+                    <hr>
+                    <p class="mb-0">Play again and try to beat your score if u wish!.</p>
                 </div>
 
+                <div class="w-100"></div>
+                <div id="cardTable">
+                    <div class="card" v-for="item in items">
+                        <transition name="flip">
+                            <!-- FRONT CARD -->
+                            <div class="frontCard" v-if="item.flipped" key="front">
+                                <img class="card-img-top" :src="item.url" alt="Card image cap">
+                            </div>
+
+                            <!-- BACK CARD -->
+                            <div class="backCard" v-if="!item.flipped" @click="flipCard(item)">
+                                <img class="card-img-top" src="img/back.png" alt="Card image cap">
+                            </div>
+                        </transition>
+                    </div>
+                </div>
+                <h4 class="tries">Tries: {{ this.tries }}</h4>
             </div>
-            <h4 class="tries">Tries: {{ this.tries }}</h4>
         </div>
 
 
     </div>
-
 
     <footer>
         KSProject 2018
