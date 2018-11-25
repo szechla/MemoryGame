@@ -4,7 +4,9 @@
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <!-- My CSS -->
@@ -21,26 +23,21 @@
 </head>
 
 <body>
-    <!-- 
-    <header>
-        <h2 class="neon-text">memory game</h2><br>
-    </header>
-    -->
     <div id="pageContent">
         <header>
             <div class="top-header">
-                <h4>TOP 5 SCORES</h3>
-                    <ol class="scoreTable">
-                        <li class="score">1. Kamil - 15 tries - 30s</li>
-                        <li class="score">*</li>
-                        <li class="score">2. Ania - 18 tries - 55s</li>
-                        <li class="score">*</li>
-                        <li class="score">3. Dafi - 25 tries - 65s</li>
-                        <li class="score">*</li>
-                        <li class="score">4. Kamil - 35 tries - 80s</li>
-                        <li class="score">*</li>
-                        <li class="score">5. Mati - 45 tries - 130s</li>
-                    </ol>
+                <h3>TOP 5 SCORES</h3>
+                <ol class="scoreTable">
+                    <li class="score">1. Kamil - 15 tries - 30s</li>
+                    <li class="score">*</li>
+                    <li class="score">2. Ania - 18 tries - 55s</li>
+                    <li class="score">*</li>
+                    <li class="score">3. Dafi - 25 tries - 65s</li>
+                    <li class="score">*</li>
+                    <li class="score">4. Kamil - 35 tries - 80s</li>
+                    <li class="score">*</li>
+                    <li class="score">5. Mati - 45 tries - 130s</li>
+                </ol>
             </div>
             <button class="scoreButton">Show scoretable</button>
         </header>
@@ -52,7 +49,7 @@
 
             <div class="w-100"></div>
             <div class="row scale-animate" v-if="this.start">
-                <button @click="newGame" class="menuButton">New Game</button>
+                <button @click="newGame" class="newGameButton">New Game</button>
 
 
                 <div class="alert alert-success scale-animate" role="alert" v-if="this.won">

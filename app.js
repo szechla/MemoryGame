@@ -100,7 +100,7 @@ var app = new Vue({
                 //End of the game
                 if (game.score === 0.5 * game.items.length) {
                     game.endTime = new Date()
-                    game.time = 0.001 * (game.endTime - game.startTime);
+                    game.time = Math.round(0.001 * (game.endTime - game.startTime));
                     setTimeout(function() {
                         game.won = true;
                         app.$forceUpdate();
